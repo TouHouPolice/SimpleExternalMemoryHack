@@ -40,5 +40,9 @@ int main(int argc, char** argv) {
 	}
 
 	CloseHandle(wesnoth_process);  
+
+	// Wait for user input before closing the console window
+	std::cin.get();
+
 	return 0;  
 }
