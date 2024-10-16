@@ -30,8 +30,9 @@ int main(int argc, char** argv) {
 		std::cout << std::format("Bytes Read: {}, Gold: {}\n", bytes_read, gold_value);
 	}
 
-
-	gold_chain.write_dest<DWORD>(wesnoth_process, 9999);
+	constexpr DWORD new_gold_value = 9999;
+	std::cout << std::format("Writing new gold value [{}]...\n", new_gold_value);
+	gold_chain.write_dest<DWORD>(wesnoth_process, new_gold_value);
 
 	// read the value again to verify that it was written
 	{
@@ -42,6 +43,7 @@ int main(int argc, char** argv) {
 	CloseHandle(wesnoth_process);  
 
 	// Wait for user input before closing the console window
+	std::cout << "Press Enter to exit...";
 	std::cin.get();
 
 	return 0;  
